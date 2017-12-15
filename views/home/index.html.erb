@@ -1,0 +1,86 @@
+<main>
+  <div class="container" style="margin-top: 30px;">
+    <div class="section">
+      <h5>아침
+        <% if @bool %>
+          <a id='menu' style='padding-left: 8px;' class='red waves-effect btn-small waves-light btn-floating' >X</a>
+          <div class="tap-target" data-activates="menu">
+            <div class="tap-target-content">
+              <h5>경고</h5>
+              <p> <%= @result %> 과다 섭취입니다.
+              <br/><%= @yak %>약을 삼가해주세요</p>
+            </div>
+          </div>
+        <% end %>
+      </h5>
+      <table class="bordered highlight">
+        <tbody>
+          <% @prescriptions.where(st_time: "아침").each do |p|%>
+            <tr>
+              <td class='clickable-td flow-text' data-href='/prescription/show/<%=p.id%>'><%=p.title%>처방전</td>
+              <td class="right"><a href="/prescription/delete/<%=p.id%>" class="alarm_btn"><i class="material-icons fav">favorite_border</i></a><a href="#!" class="alarm_btn"><i class="material-icons fav">access_time</i></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <h5>점심
+      </h5>
+      <table class="bordered highlight">
+        <tbody>
+          <% @prescriptions.where(st_time: "점심").each do |p|%>
+            <tr>
+              <td class='clickable-td flow-text' data-href='/prescription/show/<%=p.id%>'><%=p.title%>처방전</td>
+              <td class="right"><a href="/prescription/delete/<%=p.id%>" class="alarm_btn"><i class="material-icons fav">favorite_border</i></a><a href="#!" class="alarm_btn"><i class="material-icons fav">access_time</i></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <h5>저녁</h5>
+      <table class="bordered highlight">
+        <tbody>
+          <% @prescriptions.where(st_time: "저녁").each do |p|%>
+            <tr>
+              <td class='clickable-td flow-text' data-href='/prescription/show/<%=p.id%>'><%=p.title%>처방전</td>
+              <td class="right"><a href="/prescription/delete/<%=p.id%>" class="alarm_btn"><i class="material-icons fav">favorite_border</i></a><a href="#!" class="alarm_btn"><i class="material-icons fav">access_time</i></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 center">
+        <a href="/prescription/index" class="black-text waves-effect waves-light btn center grey">처방전 추가하기</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  $(".alarm_btn").hover(function(){
+    // alert("hi")
+    $(this).addClass("pulse");
+  },function(){
+    $(this).removeClass("pulse");
+  })
+
+  $(".fav").hover(function() {
+    $(this).addClass("red-text");
+  },function() {
+    $(this).removeClass("red-text");
+  })
+
+  $(".clickable-td").click(function() {
+      window.location = $(this).data("href");
+  });
+  $("#menu").on("click",function(){
+    $('.tap-target').tapTarget('open');
+  })
+</script>

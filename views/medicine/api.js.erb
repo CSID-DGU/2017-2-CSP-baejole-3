@@ -1,0 +1,32 @@
+hash = new Object;
+<% @items["item"].each do |item|%>
+  hash["<%=item['ITEM_NAME']%>"]=null
+  console.log("<%=item['ITEM_NAME']%>")
+<% end %>
+$(".cancel").on("click",function(){
+  row=$(this).parent("div").parent("div")
+  console.log("둥하트")
+  row.remove();
+})
+$('input.autocomplete').autocomplete({
+   data: hash,
+   limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+   onAutocomplete: function(val) {
+    cnt++;
+    var html2 = "<div class='row' style='margin: 0 5px 5px 0;'><div class='col s2'><font class='truncate'>"+val+"</font></div><div class='col s9'><input name='medicine["+val+"][take_time]' type='radio' id='morning"+cnt+"' value='아침'/><label for='morning"+cnt+"' style='padding-left: 20px;margin-right: 10px;'>아침</label><input name='medicine["+val+"][take_time]' type='radio' id='lunch"+cnt+"' value='점심'/><label for='lunch"+cnt+"' style='padding-left: 20px;margin-right: 10px;'>점심</label><input name='medicine["+val+"][take_time]' type='radio' id='night"+cnt+"' value='저녁'/><label for='night"+cnt+"' style='padding-left: 20px;margin-right: 10px;'>저녁</label></div><div class='col s1'><a class='btn-floating btn-small waves-effect waves-light red cancel'></a></div></div>"
+    var html = "<div class=\"row\" style=\"margin: 0 5px 5px 0;\"><div class=\"col s3\"><font class=\"truncate\">"+val+"</font></div><div class=\"col s9\"><input name=\"medicine["+val+"][take_time]\" type=\"radio\" id=\"morning"+cnt+"\" value=\"아침\"/><label for=\"morning"+cnt+"\">아침</label><input name=\"medicine["+val+"][take_time]\" type=\"radio\" id=\"lunch"+cnt+"\" value=\"점심\"/><label for=\"lunch"+cnt+"\">점심</label><input name=\"medicine["+val+"][take_time]\" type=\"radio\" id=\"night"+cnt+"\" value=\"저녁\"/><label for=\"night"+cnt+"\">저녁</label></div></div>"
+    $("#medi").append(html2)
+    // <%# @medi = Medicine.create(title: val)%>
+    // var html = "<%#= escape_javascript(render(partial: 'medi', locals: {id: @medi.id, name: @name})) %>";
+    // $.ajax({
+    //   method: "POST",
+    //   url: "/medicine/create",
+    //   data: {title: val,quantity: 8,id: <%#=@pre%>}
+    // }).always(function(msg){
+    //   console.log("success2");
+    // })
+    console.log("3")
+     // Callback function when value is autcompleted.
+   },
+   minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+ });

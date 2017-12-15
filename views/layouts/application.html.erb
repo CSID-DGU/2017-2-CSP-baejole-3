@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IYAC - 당신의 모든 약을 관리하세요</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico'%>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <header class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper white lighten-4">
+          <a href="/" class="logo center brand-logo black-text">
+              <%#= image_tag "logo.png"%>
+              <img src="<%=asset_path "logo2.png"%>" />
+          </a>
+          <ul id="nav-mobile" class="right">
+            <li><a href="/account/index" class="btn-floating  waves-effect waves-light blue-grey lighten-2"><i class="material-icons ">account_circle</i></a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <%= yield %>
+  </body>
+</html>

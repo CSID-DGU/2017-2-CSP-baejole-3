@@ -1,0 +1,21 @@
+<main>
+  <div class="container">
+    <div class="section1">
+      <div class="row valign-wrapper" style="margin-bottom: 0px;">
+        <div style="margin-left:10px;">
+          <h5 style="font-weight:bold;"><%=@medicine.title%></h5>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <ul class="collection center-align">
+        <li class="collection-item flow-text"><%=@item["ITEM_NAME"]%></li>
+        <li class="collection-item flow-text"><%=@item["ENTP_NAME"]%></li>
+        <li class="collection-item flow-text"><%=@item["ETC_OTC_CODE"]%></li>
+        <li class="collection-item flow-text"><%=@item["MATERIAL_NAME"]%></li>
+        <li class="collection-item flow-text"><%=@item["STORAGE_METHOD"]%></li>
+        <li class="collection-item flow-text"><%=@item["VALID_TERM"]%></li>
+      </ul>
+      <%#= render "medi"%>
+    </div>
+  </div>
+</main>

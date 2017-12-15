@@ -1,0 +1,63 @@
+<main>
+  <div class="container" style="margin-top: 30px;">
+    <div class="section1">
+      <div class="row valign-wrapper" style="margin-bottom: 0px;">
+        <div class="col s3 pull-s9">
+          <%= image_tag("medi.png",class: "responsive-img") %>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey lighten-4">
+            <div class="card-action center">
+              <a href="/prescription/new" class="btn grey black-text lighten-1" style="margin-right:5px">처방전 추가</a>
+              <a href="#" class="btn grey black-text lighten-1 disabled">의약품 추가</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section1">
+      <div class="row valign-wrapper"  style="margin-bottom: 0px;">
+        <div class="col s6 pull-s6">
+          <h5>검색( 처방전 )</h5>
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey lighten-3">
+            <div class="card-action">
+              <% @prescriptions.each do |p|%>
+                <a href="/prescription/show/<%=p.id%>" class="btn white black-text lighten-1 truncate" style="width: 32%; padding: 0px;"><%=p.title%></a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section1">
+      <div class="row valign-wrapper"  style="margin-bottom: 0px;">
+        <div class="col s6 pull-s6">
+          <h5>검색( 의약품 )</h5>
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey lighten-3">
+            <div class="card-content ">
+              <div class="collection">
+                <% @medicines.each do |m|%>
+                  <a href="#!" class="collection-item black-text"><span class="blue-grey lighten-3 badge flow-text"><%=m.quantity%></span><%=m.title%></a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
